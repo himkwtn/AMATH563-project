@@ -50,7 +50,8 @@ while np.max(np.abs(F(x))) >= 1e-8 and k < max_steps:
 noise = np.random.normal(0, 0.1, 101)
 noisy_data = x + noise
 
-df = pd.DataFrame(np.array([t, noisy_data]).T, columns=['t', 'theta'])
+df = pd.DataFrame(np.array([t, x, noisy_data]).T,
+                  columns=['t', 'original', 'noisy'])
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 df.to_csv(f'pendulum_data_{timestamp}.csv', index=False)
